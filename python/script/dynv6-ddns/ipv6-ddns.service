@@ -1,0 +1,15 @@
+[Unit]
+Description=ipv6-ddns
+After=network.target syslog.target
+Wants=network.target
+
+[Service]
+ExecStart=/root/python3.10/bin/python /root/ipv6-ddns/main.py
+WorkingDirectory=/root/ipv6-ddns
+Restart=on-failure
+RestartSec=10
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
