@@ -1,0 +1,153 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Consolas, sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333333;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, #7ed56fcc, #28b485cc), url("../img/hero.jpg");
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+}
+
+.logo-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.title-box {
+    color: #ffffff;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%); /*根据自身的宽高偏移*/
+    text-align: center;
+}
+
+/*定义一个名为 moveInLeft 的 关键帧动画*/
+@keyframes moveInLeft {
+    0% { /*动画进度*/
+        opacity: 0; /*不透明度*/
+        transform: translateX(-100px); /*元素位置*/
+    }
+    60% {
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.title-box .title {
+    display: block;
+    font-size: 60px;
+    font-weight: normal;
+    letter-spacing: 30px;
+
+    /*animation-name: moveInLeft;*/
+    /*animation-duration: 1s;  !*持续时长*!*/
+    /*animation-timing-function: ease-out; !*动画速度 (这里是先快后慢)*!*/
+    animation: moveInLeft 1s ease-out;
+
+    /*animation-iteration-count: 2;  !*动画发生次数*!*/
+    /*animation-delay: 2s;  !* 延时多久触发 *!*/
+}
+
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    60% {
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.title-box .title-sub {
+    display: block;
+    font-weight: lighter;
+    font-size: 20px;
+    letter-spacing: 11px;
+
+    animation: moveInRight 1s ease-out;
+}
+
+.btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    margin-top: 30px;
+    border-radius: 100px;
+    transition: all 0.2s; /*设置过渡效果,简单的动画*/
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px #00000033;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 10px #00000033;
+}
+
+.btn-write {
+    background: #ffffff;
+    color: #333333;
+}
+
+.btn::after { /*.btn的伪元素,也可以看作子元素*/
+    background: #101d2c;
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.btn::after {
+    background: #ffffff
+}
+
+.btn:hover::after {
+transform: scale(2);
+}
