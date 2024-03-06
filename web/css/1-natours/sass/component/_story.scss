@@ -1,0 +1,57 @@
+.story-card {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .15);
+    background-color: rgba($color-white, .6);
+    border-radius: .5rem;
+    padding: 3rem 6rem;
+    transform: skewX(-10deg);
+
+    & > * {
+        transform: skewX(10deg);
+    }
+
+    @include clearfix;
+
+    .story-image {
+        width: 10rem;
+        height: 10rem;
+        float: left;
+        shape-outside: circle(50% at 50% 50%); // 定义其他元素围绕它的时的外边
+        clip-path: circle(50% at 50% 50%); // 裁剪成圆形
+        transform: translateX(-3rem) skewX(10deg);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  // 自动裁剪到<img>元素的大小, 图片不会被拉伸变形
+            transform: scale(1.3);
+            transition: all .5s;
+        }
+
+        .people-name {
+            transition: all .5s;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            text-transform: uppercase;
+            text-align: center;
+            color: $color-white;
+            font-size: 1.2rem;
+        }
+    }
+
+    &:hover .story-image .people-name {
+
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+    }
+
+    &:hover .story-image img {
+        transform: scale(1);
+        filter: blur(3px) brightness(.8);  // 遮罩: 模糊 变暗
+    }
+}

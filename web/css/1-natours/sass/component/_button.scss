@@ -1,0 +1,91 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        margin-top: 3rem;
+        border-radius: 10rem;
+        transition: all .2s; // 设置样式变化时的过渡效果, 简单的动画
+        position: relative;
+        animation: moveInBottom 1s ease-out .5s;
+        animation-fill-mode: backwards; // 在动画开始前就将该元素设为动画的第一帧的样式
+        cursor: pointer;
+        border: none;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .3);
+
+        &::after {
+            transform: scaleX(1.3) scaleY(1.5);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(.2rem);
+        box-shadow: 0 .3rem 1rem rgba($color-black, .1);
+    }
+
+    &::after { // .btn的伪元素,也可以看作子元素
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+}
+
+.btn-write {
+    background: $color-white;
+    color: $color-black;
+
+    &::after {
+        background: $color-white;
+    }
+}
+
+.btn-green {
+    background: $color-primary;
+    color: $color-white;
+
+    &::after {
+        background: $color-primary;
+    }
+}
+
+
+.btn-text {
+    &:link, &:visited {
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: .5rem;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        color: $color-white;
+        background-color: $color-primary;
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        transform: translateY(1px);
+    }
+}

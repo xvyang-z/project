@@ -1,0 +1,42 @@
+.row {
+    max-width: 114rem;
+    margin: 0 auto;
+
+    &:not(:last-child) { // 选中所有除了最后一个元素
+        margin-bottom: $spaceY;
+    }
+
+    @include clearfix;
+
+    [class^="col-"] { // 选择所有以 col- 开头的 class
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $spaceX;
+        }
+    }
+
+    .col-1of1 {
+        width: 100%;
+    }
+
+    .col-1of2 {
+        width: calc((100% - #{$spaceX}) / 2); // 计算时使用变量加上 #{}
+    }
+
+    .col-1of3 {
+        width: calc((100% - 2 * #{$spaceX}) / 3);
+    }
+
+    .col-2of3 {
+        width: calc((100% - 2 * #{$spaceX}) / 3 * 2 + #{$spaceX});
+    }
+
+    .col-1of4 {
+        width: calc((100% - 3 * #{$spaceX}) / 4);
+    }
+
+    .col-3of4 {
+        width: calc((100% - 3 * #{$spaceX}) / 4 * 3 + 2 * #{$spaceX});
+    }
+}

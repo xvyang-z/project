@@ -1,0 +1,41 @@
+// 定义一个名为 moveInLeft 的 关键帧动画
+@keyframes moveInLeft {
+    0% { // 动画进度
+        opacity: 0; // 不透明度
+        transform: translateX(-10rem); // 元素位置
+    }
+    60% {
+        transform: translateX(3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    60% {
+        transform: translateX(-3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

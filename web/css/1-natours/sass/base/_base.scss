@@ -1,0 +1,36 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+// 默认字体大小 16px
+html {
+    // default 1rem = 16px
+    @include responsive(s) {
+        font-size: 30%;
+    }
+    @include responsive(m) {
+        font-size: 40%;
+    }
+    @include responsive(l) {
+        font-size: 50%;
+    }
+    @include responsive(n) {
+        font-size: 62.5%; // 1rem = 10px
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.7;
+    color: lighten($color-black, 40%);
+
+    box-sizing: border-box;
+}
+
+::selection {
+    color: white;
+    background-color: $color-primary-dark;
+}
