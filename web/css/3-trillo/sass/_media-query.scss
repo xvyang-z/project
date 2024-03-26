@@ -1,0 +1,16 @@
+// 屏幕分界点
+$width-small: 50em;  //800px
+$width-medium: 75em;  //1200px
+
+@mixin responsive($width) {
+    @if $width == s {
+        @media only screen and (max-width: $width-small) {
+            @content;
+        }
+    }
+    @if $width == m {
+        @media only screen and (max-width: $width-medium) {
+            @content;
+        }
+    }
+}

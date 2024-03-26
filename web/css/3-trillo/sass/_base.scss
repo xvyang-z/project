@@ -1,0 +1,40 @@
+:root {
+    --primary: #eb2f64;
+    --primary-light: #FF3366;
+    --primary-dark: #BA265D;
+
+    --grey-light-1: #eee;
+    --grey-light-2: #ddd;
+    --grey-light-3: #ccc;
+    --grey-light-4: #bbb;
+
+    --grey-dark-1: #252525;
+    --grey-dark-2: #505050;
+    --grey-dark-3: #757575;
+
+    --box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    min-width: 72rem;
+    color: var(--grey-dark-2);
+    font-family: Calibri, sans-serif;
+}
+
+body {
+    background-image: linear-gradient(to right bottom, var(--primary-light), var(--primary-dark));
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

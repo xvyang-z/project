@@ -1,0 +1,127 @@
+.logo {
+    height: 3rem;
+    margin-left: 3rem;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 0 0 30%;
+    margin-left: -20%;
+
+    .search__input {
+        background-color: var(--grey-light-1);
+        width: 90%;
+        border-radius: 10rem;
+        padding: .5rem 1rem;
+        transition: width .2s;
+        font-size: 1.5rem;
+        border: 1px solid var(--primary);
+
+        &::-webkit-input-placeholder {
+            color: var(--grey-dark-3);
+
+        }
+
+        &:focus {
+            width: 100%;
+            outline: none;
+            background-color: var(--grey-light-1);
+
+            + .search__button {
+                background-color: var(--grey-light-1);
+            }
+        }
+    }
+
+    .search__button {
+        height: 2rem;
+        width: 2rem;
+        border: none;
+        margin-left: -3rem;
+        background-color: var(--grey-light-1);
+    }
+
+    .search_icon {
+        height: 100%;
+        width: 100%;
+        fill: var(--primary);
+
+        &:hover {
+            cursor: pointer;
+            fill: var(--primary-dark);
+        }
+    }
+}
+
+
+.user-nav {
+    display: flex;
+    align-items: center;
+
+    align-self: stretch;
+
+    & > * {
+        &:hover {
+            background-color: var(--grey-light-4)
+        }
+    }
+
+    .user-nav__icon-box {
+        display: flex;
+        align-items: center;
+
+        height: 100%;
+        padding: 0 2rem;
+
+        position: relative;
+
+        .user-nav__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: var(--grey-dark-2);
+        }
+
+        .user-nav__notification {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: .8rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+
+            color: white;
+            background-color: var(--primary);
+
+            position: absolute;
+            top: 30%;
+            left: 60%;
+        }
+    }
+
+    .user-nav__user {
+        display: flex;
+        align-items: center;
+
+        height: 100%;
+
+        padding: 0 1.5rem;
+        cursor: pointer;
+
+
+        .user-nav__user-img {
+            width: 3rem;
+            margin-right: .5rem;
+            border-radius: 50%;
+        }
+
+        .user-nav__user-name {
+        }
+    }
+}
+
+

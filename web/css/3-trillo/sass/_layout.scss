@@ -1,0 +1,41 @@
+.container {
+    width: 90%;
+    margin: 5rem auto;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+
+    @include responsive(m) {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 7rem;
+    }
+
+    .content {
+        display: flex;
+
+        .sidebar {
+            flex: 0 0 18%;
+            background-color: var(--grey-dark-1);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @include responsive(s) {
+                flex: 0 0 7rem;
+            }
+        }
+
+        .hotel-view {
+            flex: 1;
+        }
+    }
+}
