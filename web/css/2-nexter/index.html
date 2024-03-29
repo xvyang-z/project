@@ -10,81 +10,347 @@
 
     <title>nexter &mdash; your home, your freedom</title>
 </head>
-
-
 <body>
-
 <div class="container">
-    <div class="item item--1">1</div>
-    <div class="item item--2">2</div>
-    <div class="item item--3">3</div>
-    <div class="item item--4">4</div>
-    <div class="item item--5">5</div>
-    <div class="item item--6">6</div>
-    <div class="item item--7">7</div>
-    <div class="item">8</div>
-    <div class="item item--9">9</div>
-    <div class="item item--10">10</div>
-    <div class="item item--10">10</div>
-    <div class="item item--10">10</div>
-    <div class="item item--10">10</div>
+
+
+    <div class="sidebar">
+        <button class="nav__btn"></button>
+    </div>
+
+
+    <header class="header">
+        <img src="img/logo.png" alt="" class="header__logo">
+        <h3 class="header__1">Your own home</h3>
+        <h1 class="header__2">The ultimate personal freedom</h1>
+        <button class="btn">view our properties</button>
+        <div></div>
+        <div class="header__seenon-text">Seen on</div>
+        <div class="header__seenon-logos">
+            <img src="img/logo-bbc.png" alt="">
+            <img src="img/logo-forbes.png" alt="">
+            <img src="img/logo-techcrunch.png" alt="">
+            <img src="img/logo-bi.png" alt="">
+        </div>
+    </header>
+
+
+    <div class="realtors">
+        <h3 class="head">Top 3 Realtors</h3>
+        <div class="realtor__list">
+            <img src="img/realtor-1.jpeg" alt="" class="realtors__img">
+            <div class="realtor__details">
+                <h4 class="realtor__details-header">Erik Frinman</h4>
+                <p class="realtor__details-sold">245 hours sold</p>
+            </div>
+
+            <img src="img/realtor-2.jpeg" alt="" class="realtors__img">
+            <div class="realtor__details">
+                <h4 class="realtor__details-header">Erik Frinman</h4>
+                <p class="realtor__details-sold">245 hours sold</p>
+            </div>
+
+            <img src="img/realtor-3.jpeg" alt="" class="realtors__img">
+            <div class="realtor__details">
+                <h4 class="realtor__details-header">Erik Frinman</h4>
+                <p class="realtor__details-sold">245 hours sold</p>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="features">
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-global"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur distinctio necessitatibus pariatur voluptatibus.</p>
+        </div>
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-trophy"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Voluptatum mollitia quae. Vero ipsum sapiente molestias accusamus rerum sed a eligendi aut quia.</p>
+        </div>
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Tenetur distinctio necessitatibus pariatur voluptatibus quidem consequatur harum.</p>
+        </div>
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-key"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Vero ipsum sapiente molestias accusamus rerum. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem consequatur harum, voluptatum mollitia quae. Tenetur distinctio necessitatibus pariatur voluptatibus.</p>
+        </div>
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-presentation"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Quidem consequatur harum, voluptatum mollitia quae. Tenetur distinctio necessitatibus pariatur voluptatibus.</p>
+        </div>
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-lock"></use>
+            </svg>
+            <h4 class="feature__head">Lorem, ipsum dolor</h4>
+            <p class="feature__text">Pariatur voluptatibus quidem consequatur harum, voluptatum mollitia quae.</p>
+        </div>
+    </section>
+
+
+    <div class="story__pictures">
+        <img src="img/story-1.jpeg" alt="" class="story__img-1">
+        <img src="img/story-2.jpeg" alt="" class="story__img-2">
+    </div>
+    <div class="story__content">
+        <h3 class="story__head-1">Happy Customers</h3>
+        <h2 class="story__head-2">&ldquo;The best decision of our lives&ldquo;</h2>
+        <p class="story__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur distinctio necessitatibus pariatur voluptatibus. Quidem consequatur harum volupta!</p>
+        <button class="btn">Find own homes</button>
+    </div>
+
+
+    <div class="homes">
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+        <div class="home">
+            <img src="img/house-1.jpeg" alt="" class="home__img">
+            <svg class="home__like">
+                <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+            </svg>
+            <h5 class="home__name">XXX xxx xx</h5>
+            <div class="home__location">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                </svg>
+                <p>USA</p>
+            </div>
+            <div class="home__rooms">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                </svg>
+                <p>5 rooms</p>
+            </div>
+            <div class="home__areas">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-expand"></use>
+                </svg>
+                <p>350 m<sup>2</sup></p>
+            </div>
+            <div class="home__price">
+                <svg class="feature__icon">
+                    <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <p>$1,200,000</p>
+            </div>
+            <button class="home__btn">Contact realtor</button>
+
+        </div>
+    </div>
+
+
+    <div class="gallery">
+        <img class="gallery-1" src="img/gal-1.jpeg" alt="">
+        <img class="gallery-2" src="img/gal-2.jpeg" alt="">
+        <img class="gallery-3" src="img/gal-3.jpeg" alt="">
+        <img class="gallery-4" src="img/gal-4.jpeg" alt="">
+        <img class="gallery-5" src="img/gal-5.jpeg" alt="">
+        <img class="gallery-6" src="img/gal-6.jpeg" alt="">
+        <img class="gallery-7" src="img/gal-7.jpeg" alt="">
+        <img class="gallery-8" src="img/gal-8.jpeg" alt="">
+        <img class="gallery-9" src="img/gal-9.jpeg" alt="">
+        <img class="gallery-10" src="img/gal-10.jpeg" alt="">
+        <img class="gallery-11" src="img/gal-11.jpeg" alt="">
+        <img class="gallery-12" src="img/gal-12.jpeg" alt="">
+        <img class="gallery-13" src="img/gal-13.jpeg" alt="">
+        <img class="gallery-14" src="img/gal-14.jpeg" alt="">
+    </div>
+
+
+    <footer class="footer">
+        <ul class="nav">
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">XXX xx xxx</a></li>
+        </ul>
+        <p class="copyright">XXX XXXXX XXX XXXXXX X XXXXXXXXXX X XXX XXXXX X XXXX XXXX XXXXXX XXXX XXXXX XXX XXXXXX X XXXXX X XXXX XXXX XXXXXX XXXX XXXXX XXX XXXXXX X XXXXXXXXXX X XXX XXXXX X XXXX XXXX XXXXXX XX</p>
+    </footer>
 
 
 </div>
 
-<script>
-    // 生成随机颜色的函数
-    function generateRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
-    // 获取要设置随机颜色的元素
-    let element = document.getElementsByClassName('item');
-
-    // 为元素设置随机颜色
-    for (let elementElement of element) {
-        elementElement.style.backgroundColor = generateRandomColor();
-    }
-</script>
 </body>
-
-<style>
-    .container {
-        background-color: #eee;
-        width: 1000px;
-        height: 1000px;
-        margin: 30px auto;
-
-        display: grid;
-        grid-template: 5rem 10rem 20rem 5rem / repeat(4,10rem);
-        grid-template-areas:
-        "a a a a"
-        "b c d e"
-        "f f f e"
-        "g g g g";
-        grid-gap: 2rem;
-
-        grid-auto-rows: 200px;
-        grid-auto-columns: 400px;
-        grid-auto-flow: dense;
-    }
-
-    .item {
-        background-color: red;
-    }
-    .item--1 {grid-area: a}
-    .item--2 {grid-area: b}
-    .item--3 {grid-area: c}
-    .item--4 {grid-area: d}
-    .item--5 {grid-area: e}
-    .item--6 {grid-area: f}
-    .item--7 {grid-area: g}
-
-    .item--9 {grid-column: 2/span 4; }
-</style>
 </html>

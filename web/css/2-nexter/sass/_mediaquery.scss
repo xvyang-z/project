@@ -1,0 +1,18 @@
+// 屏幕分界点, 做好用 em 做单位 (1em = 16px)
+$width-small: 50em; // 800px
+$width-medium: 75em;  //1200px
+
+@mixin responsive($width) {
+
+    @if $width == m { // <= 1200
+        @media only screen and (max-width: $width-medium) {
+            @content;
+        }
+    }
+
+    @if $width == s { // <= 800
+        @media only screen and (max-width: $width-small) {
+            @content;
+        }
+    }
+}
