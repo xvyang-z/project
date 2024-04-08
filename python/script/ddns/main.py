@@ -1,10 +1,11 @@
 import socket
 import logging
-import http.client
 import time
 
+# from lib.dynv6 import dynv6_update as update
+from lib.dnspod import dnspod_update as update
 
-logging.basicConfig(filename='log.txt', filemode='a', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='log.txt', filemode='a', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def get_temp_ipv6():
@@ -13,24 +14,13 @@ def get_temp_ipv6():
         return s.getsockname()[0]  # 获取临时IPv6地址
 
 
-def dynv6_update(ipv6, zone, token):
-    conn = http.client.HTTPSConnection('dynv6.com', source_address=('0.0.0.0', 0))
-    conn.request(
-        'GET',
-        f'/api/update?ipv6={ipv6}&zone={zone}&token={token}'
-    )
-    res = conn.getresponse()
-    data = res.read()
-    return data.decode('utf-8')
-
-
 def task():
     last_ipv6 = None
     while True:
         try:
             current_ipv6 = get_temp_ipv6()
             if current_ipv6 != last_ipv6:
-                resp = dynv6_update(current_ipv6, '412824.dns.army', 'QcxNtFcxsE7213H8KM8zkpARYQFEf4')
+                resp = update(current_ipv6)
                 last_ipv6 = current_ipv6
 
                 logging.info(f'{current_ipv6} {resp}')
