@@ -2,7 +2,7 @@
 import hashlib
 import hmac
 import time
-import datetime
+from datetime import datetime
 from http.client import HTTPSConnection
 
 
@@ -30,7 +30,7 @@ def dnspod_update(ipv6):
     }}"""
     algorithm = "TC3-HMAC-SHA256"
     timestamp = int(time.time())
-    date = datetime.datetime.fromtimestamp(timestamp, datetime.UTC).strftime("%Y-%m-%d")
+    date = datetime.utcfromtimestamp(timestamp).strftime("%Y-%m-%d")
 
     # ************* 步骤 1：拼接规范请求串 *************
     http_request_method = "POST"
