@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e0de9908-b88e-4443-9a63-7bb2ba200156" name="变更" comment="变更">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ddns/lib/dnspod.py" beforeDir="false" afterPath="$PROJECT_DIR$/ddns/lib/dnspod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ddns/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ddns/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/expo/examples" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/expo/examples" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +199,8 @@
       <workItem from="1707920923660" duration="1199000" />
       <workItem from="1708423925741" duration="7000" />
       <workItem from="1712581795857" duration="5801000" />
-      <workItem from="1712588375931" duration="90000" />
+      <workItem from="1712588375931" duration="137000" />
+      <workItem from="1712755775377" duration="77000" />
     </task>
     <servers />
   </component>
