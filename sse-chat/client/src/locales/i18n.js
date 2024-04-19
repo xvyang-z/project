@@ -1,17 +1,18 @@
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector'
 import en from './en.json'
 import zh from './zh.json'
-import LanguageDetector from 'i18next-browser-languagedetector'
+
+export const Support_Language = {
+    zh: 'zh',
+    en: 'en'
+}
 
 
-export const resources = {
-    "en": {
-        translation: en
-    },
-    "zh": {
-        translation: zh
-    }
+const resources = {
+    [Support_Language.zh]: {translation: zh},
+    [Support_Language.en]: {translation: en}
 }
 
 
@@ -20,14 +21,9 @@ i18next
     .use(initReactI18next)
     .init({
         resources: resources,
-        fallbackLng: "en", // use en if detected lng is not available
+        fallbackLng: "en",
         debug: true,
         interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
+            escapeValue: false,
         }
     });
-
-const key = {
-    test :'test'
-}
-console.log(key.test);
