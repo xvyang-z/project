@@ -1,4 +1,3 @@
-import math
 import time
 
 from PyQt5.QtCore import QThread
@@ -36,11 +35,17 @@ class DetectTask(QThread):
             bus.game_window.right = r
             bus.game_window.bottom = b
 
-            model_output = model.predict(screen_shot, verbose=False)  # 关闭识别日志输出
+            # 得分大与0.5才算
+            # 关闭识别日志输出
+            model_output = model.predict(screen_shot, conf=0.5, verbose=False)
 
             if len(model_output[0].boxes.data) == 0:
                 bus.info_signal.info_changed.emit('未识别到目标')
+
+                bus.target_window.target_all = [[0, 0, 0, 0]]
+                bus.target_window.target = [0, 0, 0, 0]
                 bus.float_window_signal.pos_updated.emit()
+
                 bus.mouse_event.move = False
                 bus.mouse_event.press = False
                 continue

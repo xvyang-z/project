@@ -12,7 +12,7 @@ class __UpdateTarget(QObject):
         self.updated.connect(self.update)
 
     def update(self):
-        self.update_recent_target()
+        self.update_target_recent_center()
 
     # def max_score_target(self, all_target: list) -> list[float, float, float, float]:
     #     """
@@ -21,9 +21,9 @@ class __UpdateTarget(QObject):
     #     """
     #     return all_target[0]
 
-    def update_recent_target(self):
+    def update_target_recent_last(self):
         """
-        更新 bus.bus.target_windows.target 为 bus.target_windows.targets 中 上次识别目标 的 最近目标
+        更新 攻击目标为 上次攻击目标 的 最近目标
         """
         min_distances = 1e10
         min_index = 0
@@ -31,8 +31,31 @@ class __UpdateTarget(QObject):
             center = (elem[0], elem[1])
 
             # 不用开方一样
-            distance = (center[0] - self.last_target_center[0]) ** 2 + (center[1] - self.last_target_center[1]) ** 2
+            distance = (center[0] - bus.target_window.target[0]) ** 2 + (center[1] - bus.target_window.target[1]) ** 2
             if distance < min_distances:
                 min_index = index
 
-            bus.target_window.target = bus.target_window.target_all[min_index]
+        bus.target_window.target = bus.target_window.target_all[min_index]
+
+    def update_target_recent_center(self):
+        """
+        更新 攻击目标为 离游戏中心(准星位置)最近的的目标
+        :return:
+        """
+        min_distances = 1e10
+        min_index = 0
+
+        game_window_center = (
+            (bus.game_window.right - bus.game_window.left) // 2,
+            (bus.game_window.bottom - bus.game_window.top) // 2
+        )
+
+        for index, elem in enumerate(bus.target_window.target_all):
+            center = (elem[0], elem[1])
+
+            # 不用开方一样
+            distance = (center[0] - game_window_center[0]) ** 2 + (center[1] - game_window_center[1]) ** 2
+            if distance < min_distances:
+                min_index = index
+
+        bus.target_window.target = bus.target_window.target_all[min_index]

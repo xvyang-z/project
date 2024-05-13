@@ -14,10 +14,11 @@ class Main(QWidget):
 
     def __init__(self):
         super().__init__()
+
         self.detect_task = None  # 识别任务(开始识别)
         self.float_window = None  # 悬浮窗任务(显示目标框)
-        self.mouse_move_task = None  # 鼠标按下的任务(自动攻击)
-        self.mouse_move = None  # 鼠标移动的任务(自动瞄准)
+        self.mouse_move_task = None  # 鼠标移动的任务(自动瞄准)
+        self.mouse_press_task = None  # 鼠标按下的任务(自动攻击)
 
         uic.loadUi(UI_DIR / 'main.ui', self)
 
@@ -90,12 +91,14 @@ class Main(QWidget):
         bus.option.auto_aim = checked
 
         if checked:
-            self.mouse_move_task = MouseMoveTask()
-            self.mouse_move_task.start()
+            if self.mouse_move_task is None:
+                self.mouse_move_task = MouseMoveTask()
+                self.mouse_move_task.start()
 
         else:
-            self.mouse_move_task.stop = True
-            self.mouse_move_task = None
+            if self.mouse_move_task:
+                self.mouse_move_task.stop = True
+                self.mouse_move_task = None
 
     def aim_scale_valueChanged(self, index: int):
         """
@@ -113,12 +116,14 @@ class Main(QWidget):
         bus.option.auto_fire = checked
 
         if checked:
-            self.mouse_move_task = MousePressTask()
-            self.mouse_move_task.start()
+            if self.mouse_press_task is None:
+                self.mouse_press_task = MousePressTask()
+                self.mouse_press_task.start()
 
         else:
-            self.mouse_move_task.stop = True
-            self.mouse_move_task = None
+            if self.mouse_press_task:
+                self.mouse_press_task.stop = True
+                self.mouse_press_task = None
 
     def select_fps_changed(self, current_index: int):
         """
@@ -160,8 +165,6 @@ class Main(QWidget):
         :return:
         """
         self.current_fps.setText(str(fps))
-
-
 
 
 if __name__ == '__main__':

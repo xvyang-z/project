@@ -32,15 +32,15 @@ class __TargetWindow:
     target_all: list[list[float, float, float, float]] = [[0, 0, 0, 0]]
 
     # 当前攻击目标 [中心x, 中心y, w, h]
-    target = [0, 0, 0, 0]
+    target: list[float, float, float, float] = [0, 0, 0, 0]
 
 
 # 游戏窗口坐标
 class __GameWindow:
-    left = 0
-    top = 0
-    right = 0
-    bottom = 0
+    left: float = 0
+    top: float = 0
+    right: float = 0
+    bottom: float = 0
 
 
 # 选项
@@ -48,7 +48,7 @@ class __Option:
     __option_file_path = ROOT_DIR / 'option.json'
 
     show_border: bool = None
-    target_border_num_index = None
+    target_border_num_index: int = None
 
     auto_aim: bool = None
     aim_scale: int = None

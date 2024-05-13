@@ -12,18 +12,18 @@ class MousePressTask(QThread):
         self.stop = False
 
     def run(self):
+        is_mouseup = False  # 鼠标是否已经放开
         while not self.stop:
-            if bus.mouse_event.press:
+            if bus.mouse_event.press:  # 如果识别到
+                is_mouseup = False
                 pydirectinput.mouseDown(button='left')
-                print('攻击')
-
             else:
-                pydirectinput.mouseUp(button='left')
-                print('停止攻击')
+                if not is_mouseup:
+                    is_mouseup = True
+                    pydirectinput.mouseUp(button='left')
 
-            time.sleep(0.01)  # 10ms检测一次  todo 按选中的fps
+            time.sleep(0.001)  # 10ms检测一次  todo 按选中的fps
 
         pydirectinput.mouseUp(button='left')
-        print('停止攻击')
         return
 
