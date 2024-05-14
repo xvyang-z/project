@@ -241,7 +241,7 @@
        </widget>
       </item>
       <item row="12" column="2">
-       <widget class="QCheckBox" name="auto_fire">
+       <widget class="QCheckBox" name="auto_attack">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -335,7 +335,7 @@
      <zorder>label_5</zorder>
      <zorder>show_border</zorder>
      <zorder>label</zorder>
-     <zorder>auto_fire</zorder>
+     <zorder>auto_attack</zorder>
      <zorder>label_2</zorder>
      <zorder>select_fps</zorder>
      <zorder>show_one_target</zorder>

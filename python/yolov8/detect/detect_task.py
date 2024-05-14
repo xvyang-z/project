@@ -4,6 +4,8 @@ from PyQt5.QtCore import QThread
 from ultralytics import YOLO
 
 import bus
+import control_mouse
+from bus.window import Window, INIT_WINDOW
 from setting import MODEL_PATH
 from utils.get_screen_shot import win32_screenshot
 
@@ -18,7 +20,7 @@ class DetectTask(QThread):
         self.start_time: float = 0  # 记录每次循环开始的时间
 
     def run(self):
-        bus.info_signal.info_changed.emit('加载模型中...')
+        bus.main_info_signal.info_changed.emit('加载模型中...')
 
         while not self.stop:
             self.correction_fps()
@@ -26,7 +28,7 @@ class DetectTask(QThread):
 
             result = win32_screenshot()
             if result is None:
-                bus.info_signal.info_changed.emit('未获取到游戏窗口')
+                bus.main_info_signal.info_changed.emit('未获取到游戏窗口')
                 continue
 
             screen_shot, (l, t, r, b) = result
@@ -40,36 +42,36 @@ class DetectTask(QThread):
             model_output = model.predict(screen_shot, conf=0.5, verbose=False)
 
             if len(model_output[0].boxes.data) == 0:
-                bus.info_signal.info_changed.emit('未识别到目标')
+                bus.main_info_signal.info_changed.emit('未识别到目标')
+                control_mouse.aimed = False
+                control_mouse.attacked = False
 
-                bus.target_window.target_all = [[0, 0, 0, 0]]
-                bus.target_window.target = [0, 0, 0, 0]
-                bus.float_window_signal.pos_updated.emit()
-
-                bus.mouse_event.move = False
-                bus.mouse_event.press = False
+                bus.target_window.target_all = [INIT_WINDOW]
+                bus.target_window.target = INIT_WINDOW
+                bus.float_window_signal.updated.emit()
                 continue
 
-            bus.info_signal.info_changed.emit('识别到目标')
+            bus.main_info_signal.info_changed.emit('识别到目标')
 
             # 更新所有目标框信息
-            bus.target_window.target_all = model_output[0].boxes.xywh.tolist()
+            bus.target_window.target_all = [Window(x, y, w, h) for x, y, w, h in model_output[0].boxes.xywh.tolist()]
 
             # 提交更新信号, 让 bus.update_target 决定用什么规则更新攻击目标
-            bus.update_target.updated.emit()
+            bus.update_target_window.updated.emit()
 
             if bus.option.show_border:
-                bus.float_window_signal.pos_updated.emit()
+                bus.float_window_signal.updated.emit()
 
+            # 更新完目标后判断是否需要移动鼠标自动瞄准
             if bus.option.auto_aim:
-                bus.mouse_event.move = True
+                control_mouse.aimed = True
 
-            if bus.option.auto_fire:
-                bus.mouse_event.press = True
+            if bus.option.auto_attack:
+                control_mouse.attacked = True
 
         # 停止识别后将提示信息置空
-        bus.info_signal.info_changed.emit('None')
-        bus.info_signal.current_fps_changed.emit(0)
+        bus.main_info_signal.info_changed.emit('None')
+        bus.main_info_signal.current_fps_changed.emit(0)
 
     def correction_fps(self):
         """
@@ -84,4 +86,4 @@ class DetectTask(QThread):
 
         # sleep 后, 整个流程结束, 再次获取时间, 计算实际的fps, 显示在界面上
         real_end_time = time.time()
-        bus.info_signal.current_fps_changed.emit(1 // (real_end_time - self.start_time))
+        bus.main_info_signal.current_fps_changed.emit(1 // (real_end_time - self.start_time))

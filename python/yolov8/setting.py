@@ -1,6 +1,11 @@
 import os
 from pathlib import Path
 
+import pyautogui
+import pydirectinput
+pyautogui.FAILSAFE = False
+pydirectinput.FAILSAFE = False
+
 ROOT_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 UI_DIR = ROOT_DIR / 'gui/ui'
 

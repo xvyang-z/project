@@ -1,9 +1,8 @@
-from PyQt5.QtCore import QThread, QObject, pyqtSignal
-
+from PyQt5.QtCore import QObject, pyqtSignal
 import bus
 
 
-class __UpdateTarget(QObject):
+class __UpdateTargetWindow(QObject):
     updated = pyqtSignal()
 
     def __init__(self):
@@ -28,10 +27,10 @@ class __UpdateTarget(QObject):
         min_distances = 1e10
         min_index = 0
         for index, elem in enumerate(bus.target_window.target_all):
-            center = (elem[0], elem[1])
+            center = (elem.x, elem.y)
 
             # 不用开方一样
-            distance = (center[0] - bus.target_window.target[0]) ** 2 + (center[1] - bus.target_window.target[1]) ** 2
+            distance = (center[0] - bus.target_window.target.x) ** 2 + (center[1] - bus.target_window.target.y) ** 2
             if distance < min_distances:
                 min_index = index
 
@@ -51,11 +50,12 @@ class __UpdateTarget(QObject):
         )
 
         for index, elem in enumerate(bus.target_window.target_all):
-            center = (elem[0], elem[1])
-
             # 不用开方一样
-            distance = (center[0] - game_window_center[0]) ** 2 + (center[1] - game_window_center[1]) ** 2
+            distance = (elem.x - game_window_center[0]) ** 2 + (elem.y - game_window_center[1]) ** 2
             if distance < min_distances:
                 min_index = index
 
         bus.target_window.target = bus.target_window.target_all[min_index]
+
+
+

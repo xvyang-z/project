@@ -1,0 +1,2 @@
+aimed = False
+attacked = False

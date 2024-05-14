@@ -1,8 +1,9 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 import bus
-from control.mouse_move_task import MouseMoveTask
-from control.mouse_press_task import MousePressTask
+from control_mouse.auto_aim import AutoAim
+from control_mouse.auto_attack import AutoAttack
+
 from detect.detect_task import DetectTask
 from gui.py_ui.float_window import FloatWindow
 from setting import UI_DIR
@@ -17,8 +18,8 @@ class Main(QWidget):
 
         self.detect_task = None  # 识别任务(开始识别)
         self.float_window = None  # 悬浮窗任务(显示目标框)
-        self.mouse_move_task = None  # 鼠标移动的任务(自动瞄准)
-        self.mouse_press_task = None  # 鼠标按下的任务(自动攻击)
+        self.auto_aim_task = None  # 鼠标移动的任务(自动瞄准)
+        self.auto_attack_task = None  # 鼠标按下的任务(自动攻击)
 
         uic.loadUi(UI_DIR / 'main.ui', self)
 
@@ -33,7 +34,7 @@ class Main(QWidget):
         self.auto_aim.toggled[bool].connect(self.auto_aim_toggled)
         self.aim_scale.valueChanged[int].connect(self.aim_scale_valueChanged)
 
-        self.auto_fire.toggled[bool].connect(self.auto_fire_toggled)
+        self.auto_attack.toggled[bool].connect(self.auto_attack_toggled)
 
         self.select_fps.currentIndexChanged[int].connect(self.select_fps_changed)
 
@@ -43,7 +44,7 @@ class Main(QWidget):
         shk = SystemHotkey()
         shk.register(('control', 'f1'), callback=lambda x: self.show_border.toggle())
         shk.register(('control', 'f2'), callback=lambda x: self.auto_aim.toggle())
-        shk.register(('control', 'f3'), callback=lambda x: self.auto_fire.toggle())
+        shk.register(('control', 'f3'), callback=lambda x: self.auto_attack.toggle())
         shk.register(('control', 'p'), callback=lambda x: self.aim_scale.setValue(self.aim_scale.value() + 1))
         shk.register(('control', 'm'), callback=lambda x: self.aim_scale.setValue(self.aim_scale.value() - 1))
         shk.register(('control', 'return'), callback=lambda x: self.start_or_stop.click())
@@ -53,12 +54,12 @@ class Main(QWidget):
         self.target_border_num.button(bus.option.target_border_num_index).setChecked(True)
         self.auto_aim.setChecked(bus.option.auto_aim)
         self.aim_scale.setValue(bus.option.aim_scale)
-        self.auto_fire.setChecked(bus.option.auto_fire)
+        self.auto_attack.setChecked(bus.option.auto_attack)
         self.select_fps.setCurrentIndex(bus.option.select_fps)
 
         # 将全局信号绑定到对应函数以更改组件内容
-        bus.info_signal.info_changed.connect(self.change_info)
-        bus.info_signal.current_fps_changed.connect(self.change_current_fps)
+        bus.main_info_signal.info_changed.connect(self.change_info)
+        bus.main_info_signal.current_fps_changed.connect(self.change_current_fps)
 
     def show_border_toggled(self, checked: bool):
         """
@@ -71,7 +72,7 @@ class Main(QWidget):
             self.float_window = FloatWindow()
             self.float_window.show()
         else:
-            self.float_window = None  # todo 悬浮窗不自动退出
+            self.float_window = None
 
     def closeEvent(self, a0):
         self.float_window = None  # fix 悬浮窗不自动退出
@@ -91,14 +92,14 @@ class Main(QWidget):
         bus.option.auto_aim = checked
 
         if checked:
-            if self.mouse_move_task is None:
-                self.mouse_move_task = MouseMoveTask()
-                self.mouse_move_task.start()
+            if self.auto_aim_task is None:
+                self.auto_aim_task = AutoAim()
+                self.auto_aim_task.start()
 
         else:
-            if self.mouse_move_task:
-                self.mouse_move_task.stop = True
-                self.mouse_move_task = None
+            if self.auto_aim_task:
+                self.auto_aim_task.stop = True
+                self.auto_aim_task = None
 
     def aim_scale_valueChanged(self, index: int):
         """
@@ -108,22 +109,22 @@ class Main(QWidget):
         self.aim_scale_label.setText(f'瞄准灵敏度 {index}')
         bus.option.aim_scale = index
 
-    def auto_fire_toggled(self, checked: bool):
+    def auto_attack_toggled(self, checked: bool):
         """
         自动攻击 改变时触发
         :param checked: 当前选中状态
         """
-        bus.option.auto_fire = checked
+        bus.option.auto_attack = checked
 
         if checked:
-            if self.mouse_press_task is None:
-                self.mouse_press_task = MousePressTask()
-                self.mouse_press_task.start()
+            if self.auto_attack_task is None:
+                self.auto_attack_task = AutoAttack()
+                self.auto_attack_task.start()
 
         else:
-            if self.mouse_press_task:
-                self.mouse_press_task.stop = True
-                self.mouse_press_task = None
+            if self.auto_attack_task:
+                self.auto_attack_task.stop = True
+                self.auto_attack_task = None
 
     def select_fps_changed(self, current_index: int):
         """
