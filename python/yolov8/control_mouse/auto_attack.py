@@ -3,7 +3,7 @@ import time
 import pydirectinput
 from PyQt5.QtCore import QThread
 
-import control_mouse
+attacked = False
 
 
 class AutoAttack(QThread):
@@ -16,9 +16,9 @@ class AutoAttack(QThread):
         is_mouse_up = False
 
         while not self.stop:
-            if control_mouse.attacked:
-                is_mouse_up = False
+            if attacked:
                 pydirectinput.mouseDown(button='left')
+                is_mouse_up = False
                 print('开始攻击`')
             else:
                 if not is_mouse_up:
@@ -27,6 +27,9 @@ class AutoAttack(QThread):
                     print('停止攻击')
 
             time.sleep(0.01)
+
+        pydirectinput.mouseUp(button='left')
+        print('停止攻击')
 
 
 

@@ -13,12 +13,11 @@ class __UpdateTargetWindow(QObject):
     def update(self):
         self.update_target_recent_center()
 
-    # def max_score_target(self, all_target: list) -> list[float, float, float, float]:
-    #     """
-    #     :param all_target: 所有目标 左 上 右 下 坐标
-    #     :return: 得分最高的目标
-    #     """
-    #     return all_target[0]
+    def max_score_target(self):
+        """
+        更新 攻击目标为 得分最高的目标
+        """
+        bus.target_window.target = bus.target_window.target_all[0]
 
     def update_target_recent_last(self):
         """

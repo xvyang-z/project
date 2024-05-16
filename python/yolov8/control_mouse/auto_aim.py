@@ -1,25 +1,23 @@
+import threading
 import time
 
 import pyautogui
 import pydirectinput
-from PyQt5.QtCore import QThread
+from PyQt5.QtCore import QObject, pyqtSignal
 
 import bus
-import control_mouse
 
 
-class AutoAim(QThread):
+class AutoAim(QObject):
+    aimed = pyqtSignal()
 
     def __init__(self):
         super().__init__()
         self.stop = False
+        self.aimed.connect(self.aim_task)
 
-    def run(self):
-        while not self.stop:
-            if control_mouse.aimed:
-                self.aim()
-            else:
-                time.sleep(0.01)
+    def aim_task(self):
+        threading.Thread(target=self.aim, daemon=True).start()
 
     def aim(self):
         """
@@ -45,7 +43,6 @@ class AutoAim(QThread):
         pydirectinput.moveRel(
             int(x_offset / 100 * bus.option.aim_scale),
             int(y_offset / 100 * bus.option.aim_scale),
-            duration=0.01,
             relative=True
         )
         print('瞄准')

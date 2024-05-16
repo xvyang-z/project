@@ -4,7 +4,7 @@ from PyQt5.QtCore import QThread
 from ultralytics import YOLO
 
 import bus
-import control_mouse
+from control_mouse import auto_attack
 from bus.window import Window, INIT_WINDOW
 from setting import MODEL_PATH
 from utils.get_screen_shot import win32_screenshot
@@ -43,8 +43,7 @@ class DetectTask(QThread):
 
             if len(model_output[0].boxes.data) == 0:
                 bus.main_info_signal.info_changed.emit('未识别到目标')
-                control_mouse.aimed = False
-                control_mouse.attacked = False
+                auto_attack.attacked = False
 
                 bus.target_window.target_all = [INIT_WINDOW]
                 bus.target_window.target = INIT_WINDOW
@@ -64,10 +63,10 @@ class DetectTask(QThread):
 
             # 更新完目标后判断是否需要移动鼠标自动瞄准
             if bus.option.auto_aim:
-                control_mouse.aimed = True
+                bus.auto_aim.aimed.emit()
 
             if bus.option.auto_attack:
-                control_mouse.attacked = True
+                auto_attack.attacked = True
 
         # 停止识别后将提示信息置空
         bus.main_info_signal.info_changed.emit('None')

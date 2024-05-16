@@ -1,2 +1,0 @@
-aimed = False
-attacked = False

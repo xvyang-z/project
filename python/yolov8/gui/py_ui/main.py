@@ -1,7 +1,6 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 import bus
-from control_mouse.auto_aim import AutoAim
 from control_mouse.auto_attack import AutoAttack
 
 from detect.detect_task import DetectTask
@@ -90,16 +89,6 @@ class Main(QWidget):
         :param checked: 当前选中状态
         """
         bus.option.auto_aim = checked
-
-        if checked:
-            if self.auto_aim_task is None:
-                self.auto_aim_task = AutoAim()
-                self.auto_aim_task.start()
-
-        else:
-            if self.auto_aim_task:
-                self.auto_aim_task.stop = True
-                self.auto_aim_task = None
 
     def aim_scale_valueChanged(self, index: int):
         """

@@ -1,1 +1,1 @@
-{"show_border": true, "target_border_num_index": 1, "auto_aim": false, "aim_scale": 25, "auto_attack": false, "select_fps": 0}
+{"show_border": true, "target_border_num_index": 1, "auto_aim": true, "aim_scale": 24, "auto_attack": true, "select_fps": 0}
