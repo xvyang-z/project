@@ -61,9 +61,9 @@ class DetectTask(QThread):
             if bus.option.show_border:
                 bus.float_window_signal.updated.emit()
 
-            # 更新完目标后判断是否需要移动鼠标自动瞄准
-            if bus.option.auto_aim:
-                bus.auto_aim.aimed.emit()
+            # # 更新完目标后判断是否需要移动鼠标自动瞄准 该流程移动到更新完目标窗口后
+            # if bus.option.auto_aim:
+            #     bus.auto_aim.aimed.emit()
 
             if bus.option.auto_attack:
                 auto_attack.attacked = True

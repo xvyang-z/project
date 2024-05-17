@@ -13,6 +13,25 @@ class __UpdateTargetWindow(QObject):
     def update(self):
         self.update_target_recent_center()
 
+        # # 更新完目标后判断是否需要移动鼠标自动瞄准
+        if bus.option.auto_aim:
+            bus.auto_aim.aimed.emit()
+
+            # # 添加规则 距离准星150个像素外的目标不会触发瞄准, 避免抖动
+            # game_window_center = (
+            #     (bus.game_window.right - bus.game_window.left) // 2,
+            #     (bus.game_window.bottom - bus.game_window.top) // 2
+            # )
+            #
+            # distance = (
+            #         (bus.target_window.target.x - game_window_center[0]) ** 2
+            #         +
+            #         (bus.target_window.target.y - game_window_center[1]) ** 2
+            # )
+            #
+            # if distance < 200 ** 2:
+            #     bus.auto_aim.aimed.emit()
+
     def max_score_target(self):
         """
         更新 攻击目标为 得分最高的目标
