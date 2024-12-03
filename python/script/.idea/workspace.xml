@@ -8,6 +8,14 @@
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/jb_reset_trail/main.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/jb_reset_trail/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/.idea/jetbrains_trail_reset.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go/jetbrains_trail_reset/main.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
@@ -114,7 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1732984571806</updated>
-      <workItem from="1732984572977" duration="5866000" />
+      <workItem from="1732984572977" duration="6183000" />
     </task>
     <servers />
   </component>
